@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 function Question(props) {
-
+    
+    //Not using this state right now
     const [selected,setSelected] = useState(false);
 
   return (
