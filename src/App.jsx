@@ -4,6 +4,7 @@ import Question from "./Question";
 function App() {
   const [topic, setTopic] = useState("");
   const [quiz, setQuiz] = useState([]);
+  const [marks,setMarks] = useState(0);
 
   function handleChange(event) {
     setTopic(event.target.value);
@@ -24,7 +25,7 @@ function App() {
           content:
             `Create a JavaScript array of 2 objects with ` +
             topic +
-            ` related random and unique questions, each including a question and a set of four multiple choice answers. Use the last index position of the answer array to indicate the correct answer. Example format: [{"question":"question?","answers":["option1","option2","option3","option4",4]. const quiz=`,
+            ` related random and unique questions, each including a question and a set of four multiple choice answers. Use the last index position of the answer array to indicate the correct answer. Example format: [{"question":"question?","answers":["option1","option2","option3","option4",0]. const quiz=`,
         },
       ],
     };
@@ -55,17 +56,6 @@ function App() {
       });
   }
 
-  //========Question Component handling========
-
-  function handleSelect(event) {
-    let questionSelected = event.target.name;
-    let choice = event.target.id;
-    const correctAnswer = quiz[questionSelected].answers[4];
-    console.log("Chosen: " + choice + " Correct: " + correctAnswer);
-  }
-
-  
-
   return (
     <div className="App">
       <input
@@ -76,13 +66,14 @@ function App() {
         value={topic}
       />
       <button onClick={callAPI}>Create Quiz</button>
+      <p>Marks: {marks}</p>
       <ul>
         {quiz.map((item, quizIndex) => (
           <Question
             object={item}
             key={quizIndex}
             id={quizIndex}
-            select={handleSelect}
+            incrementMarks={()=>setMarks(marks+1)}
           />
         ))}
       </ul>
