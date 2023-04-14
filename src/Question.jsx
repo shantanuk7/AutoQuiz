@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function Question(props) {
+<<<<<<< HEAD
   const [selectedOption, setSelectedOption] = useState(5);
   //selectedOption will be 0,1,2,3 but never 5 so for unselected, by default I set it 5.
   //selectedOption = 5 means NOT SELECTED, so not disabled.
@@ -14,6 +15,11 @@ function Question(props) {
     setSelectedOption(choice);
     console.log("Chosen: " + choice + " Correct: " + correctAnswer);
   }
+=======
+    
+    //Not using this state right now
+    const [selected,setSelected] = useState(false);
+>>>>>>> 794ade3b5cc7178c685cf81c3cf80fd4ac3f12d8
 
   return (
     <li key={props.id}>
